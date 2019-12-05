@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\02.Scripts\Player\BulletCtrl.cs" />
+     <Compile Include="Assets\02.Scripts\Player\Damage.cs" />
      <Compile Include="Assets\02.Scripts\Player\FireCtrl.cs" />
      <Compile Include="Assets\02.Scripts\Player\PlayerCtrl.cs" />
  <Reference Include="UnityEngine.AIModule">
@@ -330,6 +331,10 @@
  <Reference Include="Boo.Lang">
  <HintPath>C:/2018.1.0b13/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="CommonAD.csproj">
+      <Project>{6AB8EE46-0266-1FE9-6118-D591668D774F}</Project>      <Name>CommonAD</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

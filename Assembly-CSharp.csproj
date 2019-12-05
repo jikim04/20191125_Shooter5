@@ -387,8 +387,12 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{E9FE6A39-2062-5353-98F9-4C394B241C2E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="MainAD.csproj">
+      <Project>{593C5890-789F-66E4-AFCF-A4946C12FCB9}</Project>      <Name>MainAD</Name>    </ProjectReference>
     <ProjectReference Include="PlayerAD.csproj">
       <Project>{2E113D4B-78BC-C79C-7F0D-83DE69013391}</Project>      <Name>PlayerAD</Name>    </ProjectReference>
+    <ProjectReference Include="CommonAD.csproj">
+      <Project>{6AB8EE46-0266-1FE9-6118-D591668D774F}</Project>      <Name>CommonAD</Name>    </ProjectReference>
     <ProjectReference Include="StageAD.csproj">
       <Project>{83A2F422-0CB5-1711-6037-A7A8F4F3457C}</Project>      <Name>StageAD</Name>    </ProjectReference>
     <ProjectReference Include="EnemyAD.csproj">

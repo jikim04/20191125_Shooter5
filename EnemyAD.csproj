@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\02.Scripts\Enemy\EnemyAI.cs" />
+     <Compile Include="Assets\02.Scripts\Enemy\EnemyDamage.cs" />
+     <Compile Include="Assets\02.Scripts\Enemy\EnemyFire.cs" />
+     <Compile Include="Assets\02.Scripts\Enemy\EnemyHpBar.cs" />
      <Compile Include="Assets\02.Scripts\Enemy\MoveAgent.cs" />
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/2018.1.0b13/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -329,6 +332,10 @@
  <Reference Include="Boo.Lang">
  <HintPath>C:/2018.1.0b13/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="PlayerAD.csproj">
+      <Project>{2E113D4B-78BC-C79C-7F0D-83DE69013391}</Project>      <Name>PlayerAD</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

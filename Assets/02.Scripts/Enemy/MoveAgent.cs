@@ -8,7 +8,9 @@ public class MoveAgent : MonoBehaviour {
     public int nexidx;
     private readonly float patrolSpeed = 1.5f;
     private readonly float traceSpeed = 4.0f;
+    private float damping = 1.0f;
     private NavMeshAgent agent;
+    private Transform enemyTR;
     private bool _patrolling;
     
 
@@ -20,6 +22,7 @@ public class MoveAgent : MonoBehaviour {
             if (_patrolling)
             {
                 agent.speed = patrolSpeed;
+                damping = 1.0f;
                 MoveWayPoint();
             }
                     
@@ -32,6 +35,7 @@ public class MoveAgent : MonoBehaviour {
         get { return _traceTarget; }
         set { _traceTarget = value;
             agent.speed = traceSpeed;
+            damping = 7.0f;
             TraceTarget(_traceTarget);
 
         }
@@ -45,8 +49,11 @@ public class MoveAgent : MonoBehaviour {
 
     void Start () {
 
+        enemyTR = GetComponent<Transform>();
+
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
+        agent.updateRotation = false;
         agent.speed = patrolSpeed;
 
         var group = GameObject.Find("WayPointGroup");
@@ -54,6 +61,8 @@ public class MoveAgent : MonoBehaviour {
         {
             group.GetComponentsInChildren<Transform>(wayPoints);
             wayPoints.RemoveAt(0);
+
+            nexidx = Random.Range(0, wayPoints.Count);
         }
         MoveWayPoint();
 	}
@@ -84,12 +93,18 @@ public class MoveAgent : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (agent.isStopped == false)
+        {
+            Quaternion rot = Quaternion.LookRotation(agent.desiredVelocity);
+            enemyTR.rotation = Quaternion.Slerp(enemyTR.rotation, rot, Time.deltaTime * damping);
+        }
         if (!_patrolling) return;
 
         if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f
             && agent.remainingDistance <= 0.5f)
         {
             nexidx = ++nexidx % wayPoints.Count;
+            nexidx = Random.Range(0, wayPoints.Count);
             MoveWayPoint();
         }
 	}
